@@ -1,5 +1,10 @@
 # Sputnik changelog
 
+### 0.6.5 - 09/02/2017
+* Extract Sputnik from Overture.
+* Update some rules.
+* Update Kotlin version.
+
 ### 0.6.0 - 22/12/2016
 * Add ability to include and exclude proguard files.
 

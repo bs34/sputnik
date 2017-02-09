@@ -21,7 +21,7 @@ Then add to the `dependencies` block :
 
 ```groovy
 dependencies {
-    classpath group: 'com.tapadoo.android', name: 'sputnik', version: '0.5.8'
+    classpath group: 'com.tapadoo.android', name: 'sputnik', version: '0.6.5'
 }
 ```
 
