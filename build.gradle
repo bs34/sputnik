@@ -21,7 +21,7 @@ buildscript {
         classpath 'io.realm:realm-gradle-plugin:2.2.1'
 
         // Sputnik
-        classpath group: 'com.tapadoo.android', name: 'sputnik', version: '0.6.1', changing: true
+        classpath group: 'com.tapadoo.android', name: 'sputnik', version: '0.6.5-SNAPSHOT', changing: true
 
         // Kotlin
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${rootProject.ext.kotlin_version}"

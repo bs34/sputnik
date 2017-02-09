@@ -4,7 +4,7 @@ ext {
     targetSdkVersion = 25
 
     supportLibVersion = '25.1.0'
-    buildToolsVersion = '25.0.1'
+    buildToolsVersion = '25.0.2'
 
     kotlin_version = "1.0.6"
 

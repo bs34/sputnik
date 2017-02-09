@@ -90,11 +90,10 @@ class VersionNameOptions(val versionCodeOptions: VersionCodeOptions) {
         if (baseValue.isEmpty()) {
             versionName = getVersionMajor() + getVersionMinor() + getVersionPatch() + getVersionBuild()
 
-            val gitUtils = GitUtils()
             if (versionNameType == VersionNameType.GIT_HASH) {
-                versionName = gitUtils.getCommitHash()
+                versionName = GitUtils.getCommitHash()
             } else if (versionNameType == VersionNameType.GIT_HASH_PLUS_NAME) {
-                versionName += ".${gitUtils.getCommitHash()}"
+                versionName += ".${GitUtils.getCommitHash()}"
             }
         }
 

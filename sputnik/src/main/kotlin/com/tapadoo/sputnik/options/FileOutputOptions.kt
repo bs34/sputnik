@@ -51,7 +51,6 @@ class FileOutputOptions(val project: Project) {
     }
 
     private fun generateOutputName(variant: ApplicationVariant) {
-        val gitUtils = GitUtils()
         val map = mapOf<String, String>(
                 "appName" to appName.toLowerCase(),
                 "projectName" to project.rootProject.name,
@@ -59,16 +58,12 @@ class FileOutputOptions(val project: Project) {
                 "buildType" to variant.buildType.name,
                 "versionName" to variant.versionName,
                 "versionCode" to variant.versionCode.toString(),
-                "commitHash" to gitUtils.getCommitHash()
+                "commitHash" to GitUtils.getCommitHash()
         )
 
         val template: String
         if (nameFormat.isEmpty()) {
-            if (variant.flavorName != "" && variant.flavorName != null) {
-                template = "\$appName-\$versionName-\$flavorName-\$buildType"
-            } else {
-                template = "\$appName-\$versionName-\$buildType"
-            }
+            template = "\$appName-\$versionName"
         } else {
             template = nameFormat
         }

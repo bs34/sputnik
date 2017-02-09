@@ -1,6 +1,10 @@
 apply plugin: 'com.android.application'
 apply plugin: 'sputnik'
 
+final APP_NAME_RELEASE = "Sputnik Example"
+
+final APP_NAME = "app_name"
+final RES_TYPE_STRING = "string"
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -8,13 +12,28 @@ android {
         applicationId "com.tapadoo.sputnik.example"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        sputnik.versionCode 1
+        sputnik.versionName "1.0"
+
+        resValue RES_TYPE_STRING, APP_NAME, APP_NAME_RELEASE
+        sputnik.appName(APP_NAME_RELEASE)
     }
     buildTypes {
+        debug {
+            applicationIdSuffix '.debug'
+            //versionNameSuffix '-DEBUG'
+        }
+        qa {
+            initWith debug
+            minifyEnabled true
+            shrinkResources true
+
+            applicationIdSuffix '.qa'
+            //versionNameSuffix '-QA'
+        }
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled true
+            shrinkResources true
         }
     }
 }
