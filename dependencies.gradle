@@ -1,0 +1,15 @@
+ext {
+    compileSdkVersion = 25
+    minSdkVersion = 16
+    targetSdkVersion = 25
+
+    supportLibVersion = '25.1.0'
+    buildToolsVersion = '25.0.1'
+
+    kotlin_version = "1.0.5-3"
+
+    libs = [
+            android_gradle: 'com.android.tools.build:gradle:2.2.3',
+            kotlin        : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    ]
+}

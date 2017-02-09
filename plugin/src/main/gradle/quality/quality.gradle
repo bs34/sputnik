@@ -1,0 +1,123 @@
+//noinspection GrPackage
+apply plugin: 'checkstyle'
+apply plugin: 'findbugs'
+apply plugin: 'pmd'
+
+def final String QUALITY_URL = "https://apps.tapadoo.com/quality"
+android {
+    lintOptions {
+        def lintDir = new File("${project.rootDir}/config/lint")
+        if (!lintDir.exists()) {
+            lintDir.mkdirs()
+        }
+
+        def lintUrl = "${QUALITY_URL}/lint/lint.xml"
+        def lintFile = new File("${project.rootDir}/config/lint/lint.xml")
+        lintFile.newWriter().withWriter {
+            lintFile << new URL(lintUrl).openStream()
+        }
+
+        abortOnError true
+        xmlReport false
+        htmlReport true
+        lintConfig file("${project.rootDir}/config/lint/lint.xml")
+        htmlOutput file("$project.buildDir/reports/lint/lint-result.html")
+        xmlOutput file("$project.buildDir/reports/lint/lint-result.xml")
+    }
+}
+
+task checkstyle(type: Checkstyle) {
+    def checkstyleDir = new File("${project.rootDir}/config/checkstyle")
+    if (!checkstyleDir.exists()) {
+        checkstyleDir.mkdirs()
+    }
+    def checkstyleUrl = "${QUALITY_URL}/checkstyle/checkstyle.xml"
+    def checkStyleFile = new File("${project.rootDir}/config/checkstyle/checkstyle.xml")
+    checkStyleFile.newWriter().withWriter {
+        checkStyleFile << new URL(checkstyleUrl).openStream()
+    }
+    configFile = file("${rootProject.rootDir}/config/checkstyle/checkstyle.xml")
+
+    def suppressionsUrl = "${QUALITY_URL}/checkstyle/suppressions.xml"
+    def suppressionsFile = new File("${project.rootDir}/config/checkstyle/suppressions.xml")
+    suppressionsFile.newWriter().withWriter {
+        suppressionsFile << new URL(suppressionsUrl).openStream()
+    }
+    configProperties.checkstyleSuppressionsPath = suppressionsFile.absolutePath
+
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**'
+    classpath = files()
+}
+
+task findbugs(type: FindBugs) {
+    def findbugsDir = new File("${project.rootDir}/config/findbugs")
+    if (!findbugsDir.exists()) {
+        findbugsDir.mkdirs()
+    }
+
+    def findbugsUrl = "${QUALITY_URL}/findbugs/findbugs-filter.xml"
+    def findbugsFile = new File("${project.rootDir}/config/findbugs/findbugs-filter.xml")
+    findbugsFile.newWriter().withWriter {
+        findbugsFile << new URL(findbugsUrl).openStream()
+    }
+
+    ignoreFailures = false
+    effort = "max"
+    reportLevel = "high"
+    excludeFilter = new File("${project.rootDir}/config/findbugs/findbugs-filter.xml")
+    classes = files("${project.buildDir}/intermediates/classes")
+
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**'
+
+    reports {
+        xml.enabled = false
+        html.enabled = true
+        xml {
+            destination "$project.buildDir/reports/findbugs/findbugs.xml"
+        }
+        html {
+            destination "$project.buildDir/reports/findbugs/findbugs.html"
+        }
+    }
+    classpath = files()
+}
+
+task pmd(type: Pmd) {
+    def pmdDir = new File("${project.rootDir}/config/pmd")
+    if (!pmdDir.exists()) {
+        pmdDir.mkdirs()
+    }
+
+    def pmdUrl = "${QUALITY_URL}/pmd/pmd-ruleset.xml"
+    def pmdFile = new File("${project.rootDir}/config/pmd/pmd-ruleset.xml")
+    pmdFile.newWriter().withWriter {
+        pmdFile << new URL(pmdUrl).openStream()
+    }
+
+    ignoreFailures = false
+    ruleSetFiles = files("${project.rootDir}/config/pmd/pmd-ruleset.xml")
+    ruleSets = []
+
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**'
+
+    reports {
+        xml.enabled = false
+        html.enabled = true
+        xml {
+            destination "$project.buildDir/reports/pmd/pmd.xml"
+        }
+        html {
+            destination "$project.buildDir/reports/pmd/pmd.html"
+        }
+    }
+}
+
+preBuild.dependsOn('checkstyle')
+
+check.dependsOn 'findbugs', 'pmd', 'lint'

@@ -1,0 +1,14 @@
+image: otormaigh/android-pipelines
+
+pipelines:
+  branches:
+    develop:
+      - step:
+          script:
+            - ./script/envar.sh
+            - ./gradlew clean :sputnik:build uploadArchives
+    snapshot-*:
+      - step:
+          script:
+            - ./script/envar.sh
+            - ./gradlew clean :sputnik:build uploadArchives
