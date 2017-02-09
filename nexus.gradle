@@ -18,8 +18,6 @@ project.uploadArchives {
 modifyPom {
     project {
         name 'Sputnik'
-        description 'Gradle plugin'
-        inceptionYear '2017'
 
         developers {
             developer {
