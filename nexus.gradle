@@ -15,6 +15,22 @@ project.uploadArchives {
     }
 }
 
+modifyPom {
+    project {
+        name 'Sputnik'
+        description 'Gradle plugin'
+        inceptionYear '2017'
+
+        developers {
+            developer {
+                id 'otormaigh'
+                name 'Elliot Tormey'
+                email 'elliot.tormey@tapadoo.com'
+            }
+        }
+    }
+}
+
 private static boolean doUpload(final Project project) {
     if (project.name.endsWith("SNAPSHOT")) {
         return true

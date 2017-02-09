@@ -6,7 +6,7 @@ ext {
     supportLibVersion = '25.1.0'
     buildToolsVersion = '25.0.1'
 
-    kotlin_version = "1.0.5-3"
+    kotlin_version = "1.0.6"
 
     libs = [
             android_gradle: 'com.android.tools.build:gradle:2.2.3',
