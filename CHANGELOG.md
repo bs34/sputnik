@@ -1,5 +1,8 @@
 # Sputnik changelog
 
+### 0.6.6
+* Change default apk name format to 'appName-versionName'
+
 ### 0.6.5 - 09/02/2017
 * Extract Sputnik from Overture.
 * Update some rules.
@@ -25,11 +28,9 @@
 * Add easier way to set versionCode and versionName for a project. 
 
 ### 0.5.4 - 02/12/2016
-
 * Add checkstyle and quality file to project.
 * Add ability for Sputnik to apply checkstyle
 
 ### 0.5.3 - 25/11/2016
-
 * Convert to Kotlin
 * Fix bug with TeamCity not picking up build number
