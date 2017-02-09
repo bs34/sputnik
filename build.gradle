@@ -25,6 +25,9 @@ buildscript {
 
         // Kotlin
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${rootProject.ext.kotlin_version}"
+
+        // Dokka
+        classpath 'org.jetbrains.dokka:dokka-gradle-plugin:0.9.13'
     }
     configurations.all {
         //Check for updates to SNAPSHOTS every build
