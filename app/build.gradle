@@ -12,16 +12,25 @@ android {
         applicationId "com.tapadoo.sputnik.example"
         minSdkVersion 16
         targetSdkVersion 25
+
+        // Set the versionCode using Sputnik
         sputnik.versionCode 1
+
+        // Set the versionName using Sputnik
         sputnik.versionName "1.0"
 
         resValue RES_TYPE_STRING, APP_NAME, APP_NAME_RELEASE
+
+        // Send the name of the app to Sputnik so it can use it when renaming the APK
         sputnik.appName(APP_NAME_RELEASE)
+
+        // Give the generated APK file a specific name format.
+        sputnik.apkName('${appName}-${versionName}')
     }
     buildTypes {
         debug {
             applicationIdSuffix '.debug'
-            //versionNameSuffix '-DEBUG'
+            versionNameSuffix '-DEBUG'
         }
         qa {
             initWith debug
@@ -29,7 +38,7 @@ android {
             shrinkResources true
 
             applicationIdSuffix '.qa'
-            //versionNameSuffix '-QA'
+            versionNameSuffix '-QA'
         }
         release {
             minifyEnabled true
