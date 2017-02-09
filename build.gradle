@@ -2,6 +2,7 @@ buildscript {
     apply from: 'dependencies.gradle'
     repositories {
         jcenter()
+        mavenCentral()
 
         maven { url REPOSITORY_URL }
         maven { url SNAPSHOT_REPOSITORY_URL }
@@ -21,6 +22,9 @@ buildscript {
 
         // Sputnik
         classpath group: 'com.tapadoo.android', name: 'sputnik', version: '0.6.1', changing: true
+
+        // Kotlin
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${rootProject.ext.kotlin_version}"
     }
     configurations.all {
         //Check for updates to SNAPSHOTS every build

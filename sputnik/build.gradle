@@ -1,18 +1,6 @@
 apply plugin: 'kotlin'
 apply from: rootProject.file('nexus.gradle')
 
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${rootProject.ext.kotlin_version}"
-    }
-}
-repositories {
-    mavenCentral()
-}
-
 version = SPUTNIK_VERSION
 
 dependencies {
