@@ -5,6 +5,7 @@ import com.tapadoo.sputnik.extensions.filterNotWith
 import com.tapadoo.sputnik.utils.ResourceUtils
 import com.tapadoo.sputnik.utils.isLibrary
 import org.gradle.api.Project
+import java.io.File
 
 /**
  * Class that will apply the given proguard files to a project.
@@ -22,7 +23,7 @@ class ProguardOptions(private val project: Project,
     }
 
     // The available proguard rules that can be used.
-    private val rulesMap = mapOf(
+    private val rulesMap = mapOf<String, File>(
             "default" to ResourceUtils.getDefaultProguard(project),
             "android" to ResourceUtils.getAndroidProguard(android),
             "android-optimized" to ResourceUtils.getAndroidOptimizedProguard(android),
@@ -86,7 +87,7 @@ class ProguardOptions(private val project: Project,
      * @param exclude The proguard file/files to be excluded.
      */
     fun exclude(vararg exclude: String) {
-        // TODO Elliot: If proguard file is already applied to the project, delete it.
+        // TODO : Elliot -> If proguard file is already applied to the project, delete it.
         this.exclude = exclude.asList()
     }
 }
