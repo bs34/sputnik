@@ -1,7 +1,6 @@
-# Sputnik
-
 ![Alt Text](./art/logo.png) 
 
+# Sputnik
 ### What is it?
 
 Sputnik is a multi tool gradle plugin to help with common tedious tasks to do with gradle things.
