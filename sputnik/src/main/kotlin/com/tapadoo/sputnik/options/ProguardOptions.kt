@@ -2,8 +2,8 @@ package com.tapadoo.sputnik.options
 
 import com.android.build.gradle.BaseExtension
 import com.tapadoo.sputnik.extensions.filterNotWith
+import com.tapadoo.sputnik.utils.GeneralUtils
 import com.tapadoo.sputnik.utils.ResourceUtils
-import com.tapadoo.sputnik.utils.isLibrary
 import org.gradle.api.Project
 import java.io.File
 
@@ -51,7 +51,7 @@ class ProguardOptions(private val project: Project,
         proguardList.addAll(include)
 
         // If it a library project, add the library proguard, else add the regular android and project proguard.
-        if (isLibrary(project)) {
+        if (GeneralUtils.isLibrary(project)) {
             proguardList.add("library")
         } else {
             proguardList.addAll(listOf("android", "project"))
@@ -61,7 +61,7 @@ class ProguardOptions(private val project: Project,
         proguardList.filterNotWith(exclude)
 
         proguardList.forEach {
-            if (isLibrary(project)) {
+            if (GeneralUtils.isLibrary(project)) {
                 // If the project is a library, set the proguard files as `consumerProguardFiles`
                 android.defaultConfig.consumerProguardFiles.add(rulesMap[it])
             } else {

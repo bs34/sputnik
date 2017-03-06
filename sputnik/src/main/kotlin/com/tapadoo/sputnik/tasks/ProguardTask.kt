@@ -11,7 +11,6 @@ import org.gradle.api.tasks.TaskAction
  */
 open class ProguardTask : DefaultTask() {
     private val availableRules =
-            "\n" +
                     "    - default\n" +
                     "    - android\n" +
                     "    - android-optimized\n" +
