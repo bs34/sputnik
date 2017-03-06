@@ -1,6 +1,6 @@
 # Sputnik
 
-![Alt Text](./art/ic_launcher.svg)
+<img src="./art/ic_launcher.svg" width="48">
 
 ### What is it?
 
