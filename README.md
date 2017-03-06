@@ -1,6 +1,6 @@
 # Sputnik
 
-![Alt Text](./app/src/main/res/mipmap-xxxhdpi/ic_launcher.png) 
+![Alt Text](./art/logo.png) 
 
 ### What is it?
 
