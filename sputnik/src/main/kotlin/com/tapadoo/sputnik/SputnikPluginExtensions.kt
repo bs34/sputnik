@@ -69,9 +69,9 @@ open class SputnikPluginExtension(val project: Project) {
     }
 
     /**
-     * Should the quality checks be enabled for this build? It is set to be enabled by default.
+     * Enables or disables all quality checks when building a project with this plugin applied.
      *
-     * @param enableQuality True to enable, false otherwise.
+     * @param enableQuality True to to enable checks, false otherwise.
      **/
     fun enableQuality(enableQuality: Boolean) {
         this.enableQuality = enableQuality

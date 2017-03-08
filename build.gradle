@@ -21,10 +21,13 @@ buildscript {
         classpath 'io.realm:realm-gradle-plugin:2.2.1'
 
         // Sputnik
-        classpath group: 'com.tapadoo.android', name: 'sputnik', version: '0.6.1', changing: true
+        classpath group: 'com.tapadoo.android', name: 'sputnik', version: '0.6.5', changing: true
 
         // Kotlin
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${rootProject.ext.kotlin_version}"
+
+        // Dokka
+        classpath 'org.jetbrains.dokka:dokka-gradle-plugin:0.9.13'
     }
     configurations.all {
         //Check for updates to SNAPSHOTS every build

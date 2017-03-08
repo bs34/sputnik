@@ -20,7 +20,6 @@ import java.util.*
  * @since 28/10/2016
  */
 class VersionCodeOptions(private val project: Project) {
-    private val gitUtils by lazy { GitUtils() }
     private var versionCodeType: VersionCodeType = VersionCodeType.DEFAULT
     var baseValue = 1
 
@@ -45,7 +44,7 @@ class VersionCodeOptions(private val project: Project) {
             if (versionCodeType == VersionCodeType.TEAMCITY && isTeamCityBuild()) {
                 versionCode = getTeamCityBuild()
             } else if (versionCodeType == VersionCodeType.GIT) {
-                versionCode = gitUtils.getPullRequestNumber(baseValue)
+                versionCode = GitUtils.getPullRequestNumber(baseValue)
             }
         } else {
             if (isTeamCityBuild()) {

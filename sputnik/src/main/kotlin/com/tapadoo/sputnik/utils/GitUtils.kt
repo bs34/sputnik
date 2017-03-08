@@ -7,7 +7,7 @@ import java.io.InputStreamReader
  * @author Elliot Tormey
  * @since 07/11/2016
  */
-internal class GitUtils {
+internal object GitUtils {
     fun getCommitHash(): String {
         val command = arrayOf("git", "rev-parse", "--short", "HEAD").execute()
         val hash = command
