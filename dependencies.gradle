@@ -1,11 +1,4 @@
 ext {
-    compileSdkVersion = 25
-    minSdkVersion = 16
-    targetSdkVersion = 25
-
-    supportLibVersion = '25.1.0'
-    buildToolsVersion = '25.0.2'
-
     kotlin_version = "1.1.0"
 
     libs = [
