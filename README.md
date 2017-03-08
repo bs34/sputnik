@@ -11,6 +11,23 @@ It can :
 * Perform checkstyle, findbugs, lint and PMD code quality checks during the build process of the application.
 
 ### Versioning and APK naming
+To enable Sputnik to change the versionCode/Name of your project, update your `defaultConfig` block to add sputnik dot calls for both
+```groovy 
+sputnik.versionName "1.0"
+sputnik.versionCode 1
+```
+
+To give sputnik access to the name of the application so that it can rename the APK file as follows `{appName}-{versionName}` 
+you must explicitly pass the value in with `sputnik.appName(app_name_goes_here)`. 
+
+You can change the format of the outputted APK file with `sputnik.apkName('${appName}-${versionName}')` Acceptable parameters are :
+  * appName
+  * projectName
+  * flavorName
+  * buildType
+  * versionName
+  * versionCode
+  * commitHash
 
 ### Proguard
 Available proguard files can be found at `sputnik/resources/proguard` or by running the gradle task `listProguard` to print the
@@ -110,3 +127,6 @@ android {
 }
 
 ```
+
+#### Licence
+See the [LICENSE](LICENSE.md) file for license rights and limitations.
