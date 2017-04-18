@@ -1,0 +1,22 @@
+apply plugin: "com.gradle.plugin-publish"
+
+group = POM_GROUP
+
+pluginBundle {
+    website = WEBSITE
+    vcsUrl = VCS_URL
+    description = DESCRIPTION
+    tags = ['android', 'kotlin', 'proguard', 'versioning', 'checkstyles']
+
+    plugins {
+        sputnikPlugin {
+            id = POM_GROUP + ".sputnik"
+            displayName = DISPLAY_NAME
+            version = VERSION
+        }
+    }
+}
+
+// the gradle plugin portal isn't really compatible with SNAPSHOT versions
+// https://discuss.gradle.org/t/uploading-snapshot-versions-to-the-plugin-portal/11347
+publishPlugins.enabled = !VERSION.endsWith('-SNAPSHOT')

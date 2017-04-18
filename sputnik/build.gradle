@@ -1,8 +1,8 @@
 apply plugin: 'kotlin'
 apply plugin: 'org.jetbrains.dokka'
-apply from: rootProject.file('nexus.gradle')
+apply from: rootProject.file('publish.gradle')
 
-version = SPUTNIK_VERSION
+version = VERSION
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])

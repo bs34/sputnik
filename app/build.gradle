@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'sputnik'
+apply plugin: "com.tapadoo.android.sputnik"
 
 final APP_NAME_RELEASE = "Sputnik Example"
 
