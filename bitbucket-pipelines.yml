@@ -6,9 +6,9 @@ pipelines:
       - step:
           script:
             - ./envar.sh
-            - ./gradlew clean build uploadArchives
+            - ./gradlew clean build publishPlugins
     snapshot-*:
       - step:
           script:
             - ./envar.sh
-            - ./gradlew clean build uploadArchives
+            - ./gradlew clean build publishPlugins
