@@ -75,14 +75,14 @@ buildscript {
     }
   }
   dependencies {
-    classpath "gradle.plugin.com.tapadoo.android:sputnik:0.7.0"
+    classpath 'com.tapadoo.android:sputnik:0.7.0'
   }
 }
 ```
 You then need to apply the plugin to the projects `build.gradle`
  
 ```groovy 
-apply plugin: "com.tapadoo.android.sputnik"
+apply plugin: 'com.tapadoo.android.sputnik'
 ```
 
 
@@ -92,7 +92,7 @@ See: https://docs.gradle.org/3.5/userguide/plugins.html
 
 ```groovy 
 plugins {
-  id "com.tapadoo.android.sputnik" version "0.7.0"
+  id "com.tapadoo.android.sputnik" version "0.7.16"
 }
 ```
 #### Licence

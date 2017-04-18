@@ -60,38 +60,36 @@ bintrayUpload.dependsOn([
         jar
 ])
 
-model {
-    publishing {
-        publications {
-            Sputnik(MavenPublication) {
-                from components.java
-                artifact sourcesJar
-                artifact javadocJar
+publishing {
+    publications {
+        Sputnik(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
 
-                groupId POM_GROUP
-                artifactId ARTIFACT_ID
-                version VERSION
+            groupId POM_GROUP
+            artifactId ARTIFACT_ID
+            version VERSION
 
-                pom.withXml {
-                    asNode().children().last() + {
-                        resolveStrategy = Closure.DELEGATE_FIRST
-                        name DISPLAY_NAME
-                        description DESCRIPTION
-                        url VCS_URL
+            pom.withXml {
+                asNode().children().last() + {
+                    resolveStrategy = Closure.DELEGATE_FIRST
+                    name DISPLAY_NAME
+                    description DESCRIPTION
+                    url VCS_URL
 
-                        licenses {
-                            license {
-                                name "MIT License"
-                                url "https://opensource.org/licenses/MIT"
-                                distribution "repo"
-                            }
+                    licenses {
+                        license {
+                            name "MIT License"
+                            url "https://opensource.org/licenses/MIT"
+                            distribution "repo"
                         }
-                        developers {
-                            developer {
-                                id 'otormaigh'
-                                name 'Elliot Tormey'
-                                email 'elliot.tormey@tapadoo.com'
-                            }
+                    }
+                    developers {
+                        developer {
+                            id 'otormaigh'
+                            name 'Elliot Tormey'
+                            email 'elliot.tormey@tapadoo.com'
                         }
                     }
                 }
@@ -116,16 +114,10 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 
 def final getBinTrayUser() {
     final String BINTRAY_USER = "BINTRAY_USER"
-    return project.hasProperty(BINTRAY_USER)? project.getProperty(BINTRAY_USER) : null
+    return project.hasProperty(BINTRAY_USER) ? project.getProperty(BINTRAY_USER) : null
 }
 
 def final getBinTrayKey() {
     final String BINTRAY_KEY = "BINTRAY_KEY"
-    return project.hasProperty(BINTRAY_KEY)? project.getProperty(BINTRAY_KEY) : null
-}
-
-task showBintrayProps {
-    doLast {
-        println "Bintray user/password: ${getBinTrayUser()}/${getBinTrayKey()}"
-    }
+    return project.hasProperty(BINTRAY_KEY) ? project.getProperty(BINTRAY_KEY) : null
 }
