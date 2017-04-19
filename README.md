@@ -81,7 +81,7 @@ buildscript {
   }
   
   dependencies {
-    classpath 'com.tapadoo.android:sputnik:0.7.17'
+    classpath 'com.tapadoo.android:sputnik:0.8.0'
   }
 }
 ```
