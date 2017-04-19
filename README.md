@@ -66,7 +66,7 @@ sputnik.enableQuality(false)
 ```
  
 ### How to add it
-Sputnik can be added to your project either from Bintray or Gradle's Plugin Portal. 
+Sputnik can be added to your project either from [Bintray](https://bintray.com/tapadoo/maven/sputnik) or [Gradle's Plugin Portal]([Gradle Plugin Portal](https://plugins.gradle.org/plugin/com.tapadoo.android.sputnik)). 
 
 ####Gradle Plugin Portal
 To add Sputnik to a project, update the root `build.gradle` buildscript to include the following: 
@@ -76,9 +76,10 @@ buildscript {
     // If you want to download from the Gradle Plugin Portal
     maven { url "https://plugins.gradle.org/m2/" }
     
-    // If you want to download from Bintray
-    maven { url "http://dl.bintray.com/tapadoo/maven" }
+    // If you want to download from jCenter
+    jcenter()
   }
+  
   dependencies {
     classpath 'com.tapadoo.android:sputnik:0.7.17'
   }
@@ -89,14 +90,9 @@ You then need to apply the plugin to the projects `build.gradle`
 apply plugin: 'com.tapadoo.android.sputnik'
 ```
 
-If you are using Gradle version > 2.1 you can instead use the new, incubating, plugin mechanism:
 
-See: https://docs.gradle.org/3.5/userguide/plugins.html
+And that's it. Happy Sputniking.
 
-```groovy 
-plugins {
-    id "com.tapadoo.android.sputnik" version "0.7.17"
-}
-```
+
 ### Licence
 See the [LICENSE](LICENSE.md) file for license rights and limitations.
