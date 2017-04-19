@@ -1,4 +1,6 @@
 # Sputnik changelog
+### 0.8.0 - 19/04/2017
+* Initial public release
 
 ### 0.6.6
 * Change default apk name format to 'appName-versionName'
