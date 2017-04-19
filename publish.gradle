@@ -1,0 +1,123 @@
+apply plugin: 'com.gradle.plugin-publish'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
+
+final isSnapshot = VERSION.endsWith('-SNAPSHOT')
+
+group = POM_GROUP
+version = VERSION
+
+pluginBundle {
+    website = WEBSITE
+    vcsUrl = VCS_URL
+    description = DESCRIPTION
+    tags = ['android', 'proguard', 'versioning', 'checkstyle']
+
+    plugins {
+        sputnikPlugin {
+            id = POM_GROUP + ".sputnik"
+            displayName = DISPLAY_NAME
+            version = VERSION
+        }
+    }
+
+    mavenCoordinates {
+        groupId = POM_GROUP
+        artifactId = ARTIFACT_ID
+        version = VERSION
+    }
+}
+publishPlugins.enabled = !isSnapshot
+
+bintray {
+    user = getBinTrayUser()
+    key = getBinTrayKey()
+    publications = [DISPLAY_NAME]
+
+    pkg {
+        repo = 'maven'
+        name = ARTIFACT_ID
+        userOrg = ORG
+        vcsUrl = VCS_URL + '.git'
+        websiteUrl = VCS_URL
+        issueTrackerUrl = VCS_URL + '/issues'
+        licenses = ['MIT']
+        publish = !isSnapshot
+
+        version {
+            name = VERSION
+            desc = DESCRIPTION
+            vcsTag = VERSION
+            released = new Date()
+        }
+    }
+}
+
+publish.dependsOn(bintrayUpload)
+bintrayUpload.dependsOn([
+        'generatePomFileForSputnikPublication',
+        jar
+])
+
+publishing {
+    publications {
+        Sputnik(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+
+            groupId POM_GROUP
+            artifactId ARTIFACT_ID
+            version VERSION
+
+            pom.withXml {
+                asNode().children().last() + {
+                    resolveStrategy = Closure.DELEGATE_FIRST
+                    name DISPLAY_NAME
+                    description DESCRIPTION
+                    url VCS_URL
+
+                    licenses {
+                        license {
+                            name "MIT License"
+                            url "https://opensource.org/licenses/MIT"
+                            distribution "repo"
+                        }
+                    }
+                    developers {
+                        developer {
+                            id 'otormaigh'
+                            name 'Elliot Tormey'
+                            email 'elliot.tormey@tapadoo.com'
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+configurations {
+    javadocDeps
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allJava
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+def final getBinTrayUser() {
+    final String BINTRAY_USER = "BINTRAY_USER"
+    return project.hasProperty(BINTRAY_USER) ? project.getProperty(BINTRAY_USER) : null
+}
+
+def final getBinTrayKey() {
+    final String BINTRAY_KEY = "BINTRAY_KEY"
+    return project.hasProperty(BINTRAY_KEY) ? project.getProperty(BINTRAY_KEY) : null
+}

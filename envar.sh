@@ -15,5 +15,7 @@ echo "nexusPassword=$NEXUS_PASSWORD" >> $FILE
 echo "REPOSITORY_URL=$REPOSITORY_URL" >> $FILE
 echo "SNAPSHOT_REPOSITORY_URL=$SNAPSHOT_REPOSITORY_URL" >> $FILE
 echo "POM_GROUP=$POM_GROUP" >> $FILE
+echo "gradle.publish.key=${gradle.publish.key}" >> $FILE
+echo "gradle.publish.secret=${gradle.publish.secret}" >> $FILE
 echo "# End of Bitbucket Pipelines Environment Variable" >> $FILE
 echo >> $FILE

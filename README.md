@@ -65,30 +65,34 @@ Sputnik by default will enable all code quality checks. To disable add the follo
 sputnik.enableQuality(false)
 ```
  
-### How to use it
+### How to add it
+Sputnik can be added to your project either from [Bintray](https://bintray.com/tapadoo/maven/sputnik) or [Gradle's Plugin Portal](https://plugins.gradle.org/plugin/com.tapadoo.android.sputnik). 
 
-To add Sputnik to a project update the root `build.gradle` buildscript to include the following : 
-
+####Gradle Plugin Portal
+To add Sputnik to a project, update the root `build.gradle` buildscript to include the following: 
 ```groovy 
 buildscript {
-    repositories {
-        // For stable releases.
-        maven { url "https://apps.tapadoo.com/nexus/content/repositories/tapadoo" }
-        // For SNAPSHOT releases.
-        maven { url "https://apps.tapadoo.com/nexus/content/repositories/snapshots/" }
-    }
+  repositories {
+    // If you want to download from the Gradle Plugin Portal
+    maven { url "https://plugins.gradle.org/m2/" }
     
-    dependencies {
-        classpath group: 'com.tapadoo.android', name: 'sputnik', version: '0.6.5'
-    }
+    // If you want to download from jCenter
+    jcenter()
+  }
+  
+  dependencies {
+    classpath 'com.tapadoo.android:sputnik:0.8.0'
+  }
 }
 ```
-
 You then need to apply the plugin to the projects `build.gradle`
- 
 ```groovy 
-apply plugin: 'sputnik'
+apply plugin: 'com.tapadoo.android.sputnik'
 ```
 
-#### Licence
+
+And that's it. Happy Sputniking.
+
+
+### Licence
 See the [LICENSE](LICENSE.md) file for license rights and limitations.
