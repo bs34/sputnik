@@ -66,7 +66,7 @@ sputnik.enableQuality(false)
 ```
  
 ### How to add it
-Sputnik can be added to your project either from [Bintray](https://bintray.com/tapadoo/maven/sputnik) or [Gradle's Plugin Portal]([Gradle Plugin Portal](https://plugins.gradle.org/plugin/com.tapadoo.android.sputnik)). 
+Sputnik can be added to your project either from [Bintray](https://bintray.com/tapadoo/maven/sputnik) or [Gradle's Plugin Portal](https://plugins.gradle.org/plugin/com.tapadoo.android.sputnik). 
 
 ####Gradle Plugin Portal
 To add Sputnik to a project, update the root `build.gradle` buildscript to include the following: 
