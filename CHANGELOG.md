@@ -1,4 +1,8 @@
 # Sputnik changelog
+### 0.8.1 - 06-06-2017
+* Remove 'UnusedResources' error warning.
+* Move to Wercker build/deploys
+
 ### 0.8.0 - 19/04/2017
 * Initial public release
 

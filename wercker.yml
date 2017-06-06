@@ -1,0 +1,11 @@
+box: otormaigh/android-pipelines
+build:
+  steps:
+    - script:
+        name: Build and check library
+        code: ./gradlew :sputnik:build
+deploy-release:
+  steps:
+    - script:
+        name: Deploy release build
+        code: ./gradlew publishPlugins publish -Dgradle.publish.key=$GRADLE_PLUGIN_KEY -Dgradle.publish.secret=$GRADLE_PLUGIN_SECRET
