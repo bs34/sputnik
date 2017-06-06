@@ -1,0 +1,11 @@
+box: otormaigh/android-pipelines
+build:
+  steps:
+    - script:
+        name: Build and check library
+        code: :sputnik:build
+deploy-release:
+  steps:
+    - script:
+        name: Deploy release build
+        code: ./gradlew publishPlugins publish
