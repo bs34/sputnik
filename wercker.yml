@@ -3,7 +3,7 @@ build:
   steps:
     - script:
         name: Build and check library
-        code: :sputnik:build
+        code: ./gradlew :sputnik:build
 deploy-release:
   steps:
     - script:
