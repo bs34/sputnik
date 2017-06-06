@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
     <issue id="HardcodedText" severity="error" />
-    <issue id="UnusedResources" severity="error" />
     <issue id="WeakerAccess" severity="error" />
     <issue id="NullableProblems" severity="error" />
     <issue id="GoogleAppIndexingWarning" severity="ignore" />
