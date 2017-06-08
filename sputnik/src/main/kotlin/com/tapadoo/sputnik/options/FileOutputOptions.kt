@@ -68,7 +68,8 @@ class FileOutputOptions(val project: Project) {
             template = nameFormat
         }
 
-        val fileName = templateEngine.createTemplate(template).make(map).toString()
+        val whitespacePattern = "\\s".toRegex()
+        val fileName = templateEngine.createTemplate(template).make(map).toString().replace(whitespacePattern,"-")
         project.setProperty("archivesBaseName", fileName)
     }
 }
