@@ -1,4 +1,8 @@
 # Sputnik changelog
+
+### 0.9.0 - 08-06-2017
+* whitespaces in apk base filename replaced with a dash
+
 ### 0.8.1 - 06-06-2017
 * Remove 'UnusedResources' error warning.
 * Move to Wercker build/deploys
