@@ -1,6 +1,7 @@
 buildscript {
     apply from: 'dependencies.gradle'
     repositories {
+        google()
         jcenter()
 
         maven { url "https://plugins.gradle.org/m2/" }
@@ -15,9 +16,6 @@ buildscript {
         classpath 'com.gradle.publish:plugin-publish-plugin:0.9.7'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
 
-        // Sputnik
-        classpath "com.tapadoo.android:sputnik:0.7.17"
-
         // Kotlin
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${rootProject.ext.kotlin_version}"
 
@@ -27,6 +25,7 @@ buildscript {
 }
 allprojects {
     repositories {
+        google()
         jcenter()
     }
 }

@@ -1,3 +1,9 @@
+buildscript {
+    dependencies {
+        classpath files("../sputnik/build/libs/sputnik-${VERSION}.jar")
+    }
+}
+
 apply plugin: 'com.android.application'
 apply plugin: 'com.tapadoo.android.sputnik'
 
@@ -6,12 +12,13 @@ final APP_NAME_RELEASE = "Sputnik Example"
 final APP_NAME = "app_name"
 final RES_TYPE_STRING = "string"
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.0"
+
     defaultConfig {
         applicationId "com.tapadoo.sputnik.example"
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion 26
 
         // Set the versionCode using Sputnik
         sputnik.versionCode 1
@@ -27,6 +34,7 @@ android {
         // Give the generated APK file a specific name format.
         sputnik.apkName('${appName}-${versionName}')
     }
+
     buildTypes {
         debug {
             applicationIdSuffix '.debug'
@@ -48,6 +56,5 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:25.3.1'
+    implementation 'com.android.support:appcompat-v7:26.0.1'
 }

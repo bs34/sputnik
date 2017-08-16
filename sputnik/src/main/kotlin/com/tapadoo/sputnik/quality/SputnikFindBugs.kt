@@ -2,6 +2,7 @@ package com.tapadoo.sputnik.quality
 
 import com.tapadoo.sputnik.utils.ResourceUtils
 import org.gradle.api.plugins.quality.FindBugs
+import java.io.File
 
 /**
  * FindBugs configuration. Used to setup the findbugs plugin with our filter and various other settings.
@@ -20,14 +21,14 @@ open class SputnikFindBugs : FindBugs() {
         classes = project.files("${project.buildDir}/intermediates/classes")
         source("src")
         include("**/*.java")
-        include("**/*.kt")
+        exclude("**/*.kt")
         exclude("**/gen/**")
 
         reports.apply {
             xml.isEnabled = false
             html.isEnabled = true
-            xml.setDestination("${project.buildDir}/reports/findbugs/findbugs.xml")
-            html.setDestination("${project.buildDir}/reports/findbugs/findbugs.html")
+            xml.destination = File("${project.buildDir}/reports/findbugs/findbugs.xml")
+            html.destination = File("${project.buildDir}/reports/findbugs/findbugs.html")
         }
         classpath = project.files()
     }

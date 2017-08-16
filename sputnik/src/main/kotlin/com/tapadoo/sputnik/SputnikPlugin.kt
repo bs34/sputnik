@@ -33,7 +33,7 @@ class SputnikPlugin : Plugin<Project> {
                 // Checkstyle
                 project.plugins.apply(ResourceUtils.CHECKSTYLE)
                 val checkstyle = project.tasks.create(ResourceUtils.CHECKSTYLE, SputnikCheckstyle::class.java)
-                project.extensions.getByType(CheckstyleExtension::class.java).toolVersion = "7.3"
+                project.extensions.getByType(CheckstyleExtension::class.java).toolVersion = "8.1"
 
                 // FindBugs
                 project.plugins.apply(ResourceUtils.FINDBUGS)

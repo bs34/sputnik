@@ -21,7 +21,7 @@ open class SputnikCheckstyle : Checkstyle() {
         ignoreFailures = false
         source("src")
         include("**/*.java")
-        include("**/*.kt")
+        exclude("**/*.kt")
         exclude("**/gen/**")
         classpath = project.files()
     }

@@ -2,6 +2,7 @@ package com.tapadoo.sputnik.quality
 
 import com.tapadoo.sputnik.utils.ResourceUtils
 import org.gradle.api.plugins.quality.Pmd
+import java.io.File
 
 /**
  * Pmd configuration. Used to setup the pmd plugin with our rules and various other settings.
@@ -18,14 +19,14 @@ open class SputnikPmd : Pmd() {
         ruleSets = emptyList()
         source("src")
         include("**/*.java")
-        include("**/*.kt")
+        exclude("**/*.kt")
         exclude("**/gen/**")
 
         reports.apply {
             xml.isEnabled = false
             html.isEnabled = true
-            xml.setDestination("${project.buildDir}/reports/pmd/pmd.xml")
-            html.setDestination("${project.buildDir}/reports/pmd/pmd.html")
+            xml.destination = File("${project.buildDir}/reports/pmd/pmd.xml")
+            html.destination = File("${project.buildDir}/reports/pmd/pmd.html")
         }
     }
 }
