@@ -16,7 +16,7 @@ buildscript {
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
 
         // Sputnik
-        classpath files("../sputnik/sputnik/build/libs/sputnik-0.9.0.jar")
+        classpath "com.tapadoo.android:sputnik:0.9.0"
 
         // Kotlin
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${rootProject.ext.kotlin_version}"
