@@ -1,6 +1,6 @@
 buildscript {
     dependencies {
-        classpath files("../sputnik/build/libs/sputnik-${VERSION}.jar")
+        classpath files("$rootDir/sputnik/build/libs/sputnik-${VERSION}.jar")
     }
 }
 
@@ -13,7 +13,7 @@ final APP_NAME = "app_name"
 final RES_TYPE_STRING = "string"
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.0"
+    buildToolsVersion "26.0.2"
 
     defaultConfig {
         applicationId "com.tapadoo.sputnik.example"
@@ -21,7 +21,7 @@ android {
         targetSdkVersion 26
 
         // Set the versionCode using Sputnik
-        sputnik.versionCode 1
+        sputnik.versionCode 1   
 
         // Set the versionName using Sputnik
         sputnik.versionName "1.0"
@@ -40,21 +40,20 @@ android {
             applicationIdSuffix '.debug'
             versionNameSuffix '-DEBUG'
         }
-        qa {
-            initWith debug
-            minifyEnabled true
-            shrinkResources true
-
-            applicationIdSuffix '.qa'
-            versionNameSuffix '-QA'
-        }
         release {
             minifyEnabled true
             shrinkResources true
+        }
+        qa {
+            initWith release
+            debuggable true
+
+            applicationIdSuffix '.qa'
+            versionNameSuffix '-QA'
         }
     }
 }
 
 dependencies {
-    implementation 'com.android.support:appcompat-v7:26.0.1'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
 }
