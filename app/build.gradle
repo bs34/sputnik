@@ -21,7 +21,7 @@ android {
         targetSdkVersion 26
 
         // Set the versionCode using Sputnik
-        sputnik.versionCode 1   
+        sputnik.versionCode 1
 
         // Set the versionName using Sputnik
         sputnik.versionName "1.0"
